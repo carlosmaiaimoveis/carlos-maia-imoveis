@@ -23,223 +23,13 @@ import {
   Minus,
 } from "lucide-react";
 
-// ---------- DADOS DE EXEMPLO (substituir pelos imóveis reais depois) ----------
-const IMOVEIS = [
-  {
-    id: 1,
-    titulo: "Casa moderna no Bairro Sidil",
-    cidade: "Divinópolis",
-    bairro: "Sidil",
-    tipo: "Casa",
-    preco: 890000,
-    quartos: 3,
-    banheiros: 2,
-    vagas: 2,
-    area: 220,
-    destaque: true,
-    descricao:
-      "Casa térrea com acabamento de alto padrão, área gourmet completa com churrasqueira, piscina aquecida e amplo jardim. Ambientes integrados, pé-direito alto na sala e iluminação natural em todos os cômodos. Excelente localização em rua tranquila, próxima a escolas e ao centro.",
-    caracteristicas: [
-      "Piscina aquecida",
-      "Área gourmet",
-      "Pé-direito alto",
-      "Jardim",
-      "Lavabo",
-      "Cozinha planejada",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200",
-    ],
-  },
-  {
-    id: 2,
-    titulo: "Apartamento alto padrão no Centro",
-    cidade: "Divinópolis",
-    bairro: "Centro",
-    tipo: "Apartamento",
-    preco: 650000,
-    quartos: 3,
-    banheiros: 2,
-    vagas: 2,
-    area: 145,
-    destaque: true,
-    descricao:
-      "Apartamento de cobertura com vista panorâmica da cidade. Sala ampla com varanda gourmet integrada, suíte master com closet e hidromassagem. Prédio com lazer completo: piscina, academia, salão de festas e portaria 24h.",
-    caracteristicas: [
-      "Cobertura",
-      "Varanda gourmet",
-      "Hidromassagem",
-      "Closet",
-      "Lazer completo",
-      "Portaria 24h",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200",
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
-    ],
-  },
-  {
-    id: 3,
-    titulo: "Sobrado em condomínio fechado",
-    cidade: "Divinópolis",
-    bairro: "Belvedere",
-    tipo: "Casa",
-    preco: 1250000,
-    quartos: 4,
-    banheiros: 4,
-    vagas: 4,
-    area: 320,
-    destaque: true,
-    descricao:
-      "Sobrado de 4 suítes em condomínio fechado de alto padrão com segurança 24h. Acabamento impecável, automação residencial, sala de cinema e adega climatizada. Lote de 600m² com piscina, deck, churrasqueira e horta orgânica.",
-    caracteristicas: [
-      "4 suítes",
-      "Automação",
-      "Sala de cinema",
-      "Adega",
-      "Piscina",
-      "Condomínio fechado",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200",
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200",
-    ],
-  },
-  {
-    id: 4,
-    titulo: "Apartamento aconchegante no Niterói",
-    cidade: "Divinópolis",
-    bairro: "Niterói",
-    tipo: "Apartamento",
-    preco: 320000,
-    quartos: 2,
-    banheiros: 1,
-    vagas: 1,
-    area: 65,
-    destaque: false,
-    descricao:
-      "Apartamento bem localizado, próximo a comércios, escolas e transporte público. Imóvel pronto para morar, com cozinha planejada e armários nos quartos. Excelente opção para primeiro imóvel ou investimento.",
-    caracteristicas: [
-      "Pronto para morar",
-      "Cozinha planejada",
-      "Armários",
-      "Próximo ao comércio",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200",
-    ],
-  },
-  {
-    id: 5,
-    titulo: "Casa com quintal amplo no Esplanada",
-    cidade: "Divinópolis",
-    bairro: "Esplanada",
-    tipo: "Casa",
-    preco: 480000,
-    quartos: 3,
-    banheiros: 2,
-    vagas: 2,
-    area: 180,
-    destaque: false,
-    descricao:
-      "Casa familiar com quintal amplo, ideal para crianças e pets. Possui edícula nos fundos com churrasqueira e área de serviço externa. Bairro residencial e tranquilo.",
-    caracteristicas: [
-      "Quintal amplo",
-      "Edícula",
-      "Churrasqueira",
-      "Bairro tranquilo",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1200",
-      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=1200",
-    ],
-  },
-  {
-    id: 6,
-    titulo: "Chácara com lago em Carmo do Cajuru",
-    cidade: "Carmo do Cajuru",
-    bairro: "Zona Rural",
-    tipo: "Rural",
-    preco: 750000,
-    quartos: 3,
-    banheiros: 2,
-    vagas: 4,
-    area: 5000,
-    destaque: false,
-    descricao:
-      "Chácara de 5.000m² com lago próprio, casa principal de 3 quartos, piscina, pomar com diversas frutíferas e área para criação. A 25 minutos de Divinópolis, ideal para descanso ou moradia definitiva.",
-    caracteristicas: [
-      "Lago",
-      "Pomar",
-      "Piscina",
-      "5.000m²",
-      "Casa principal",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1542718610-a1d656d1884c?w=1200",
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
-    ],
-  },
-  {
-    id: 7,
-    titulo: "Terreno em loteamento nobre",
-    cidade: "Divinópolis",
-    bairro: "Interlagos",
-    tipo: "Terreno",
-    preco: 280000,
-    quartos: 0,
-    banheiros: 0,
-    vagas: 0,
-    area: 450,
-    destaque: false,
-    descricao:
-      "Terreno plano de 450m² em loteamento de alto padrão com infraestrutura completa: asfalto, água, esgoto, energia e iluminação. Excelente topografia para construção.",
-    caracteristicas: [
-      "Plano",
-      "Infraestrutura completa",
-      "Loteamento nobre",
-      "450m²",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200",
-    ],
-  },
-  {
-    id: 8,
-    titulo: "Apartamento novo no São José",
-    cidade: "Divinópolis",
-    bairro: "São José",
-    tipo: "Apartamento",
-    preco: 410000,
-    quartos: 2,
-    banheiros: 2,
-    vagas: 1,
-    area: 78,
-    destaque: false,
-    descricao:
-      "Apartamento novo, primeira locação ou venda. Suíte master, varanda integrada à sala, acabamento moderno. Prédio com elevador, salão de festas e área de lazer.",
-    caracteristicas: [
-      "Novo",
-      "Suíte",
-      "Varanda",
-      "Elevador",
-      "Lazer",
-    ],
-    fotos: [
-      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200",
-      "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200",
-    ],
-  },
-];
+// ---------- CONFIGURAÇÃO DA PLANILHA GOOGLE SHEETS ----------
+// Esse é o ID da planilha do Carlos Maia Imóveis.
+// Pra trocar de planilha, basta mudar esse ID e o nome da aba abaixo.
+const SHEETS_ID = "1YYL8-OMgM4T5k1Zh6V8Jdc9VZWDN5Np_LdsIggA1Lv0";
+const SHEETS_ABA = "imoveis";
+const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/gviz/tq?tqx=out:csv&sheet=${SHEETS_ABA}`;
 
-const CIDADES = ["Todas", ...new Set(IMOVEIS.map((i) => i.cidade))];
 const TIPOS = ["Todos", "Casa", "Apartamento", "Terreno", "Rural"];
 
 const formatarPreco = (valor) =>
@@ -248,6 +38,100 @@ const formatarPreco = (valor) =>
     currency: "BRL",
     maximumFractionDigits: 0,
   }).format(valor);
+
+// ---------- PARSER DE CSV (lê os dados da planilha) ----------
+// Função que transforma o texto CSV (formato exportado pelo Google Sheets)
+// numa lista de objetos JavaScript que o site consegue usar.
+function parseCSV(texto) {
+  const linhas = [];
+  let atual = [];
+  let campo = "";
+  let dentroDeAspas = false;
+
+  for (let i = 0; i < texto.length; i++) {
+    const c = texto[i];
+    const proximo = texto[i + 1];
+
+    if (c === '"') {
+      if (dentroDeAspas && proximo === '"') {
+        campo += '"';
+        i++;
+      } else {
+        dentroDeAspas = !dentroDeAspas;
+      }
+    } else if (c === "," && !dentroDeAspas) {
+      atual.push(campo);
+      campo = "";
+    } else if ((c === "
+" || c === "") && !dentroDeAspas) {
+      if (campo !== "" || atual.length > 0) {
+        atual.push(campo);
+        linhas.push(atual);
+        atual = [];
+        campo = "";
+      }
+      if (c === "" && proximo === "
+") i++;
+    } else {
+      campo += c;
+    }
+  }
+  if (campo !== "" || atual.length > 0) {
+    atual.push(campo);
+    linhas.push(atual);
+  }
+  return linhas;
+}
+
+// Converte uma lista de linhas em uma lista de imóveis
+function linhasParaImoveis(linhas) {
+  if (linhas.length < 2) return [];
+  const cabecalho = linhas[0].map((c) => c.trim().toLowerCase());
+  const indice = (nome) => cabecalho.indexOf(nome);
+
+  const imoveis = [];
+  for (let i = 1; i < linhas.length; i++) {
+    const linha = linhas[i];
+    if (linha.every((c) => c.trim() === "")) continue;
+
+    const obter = (nome) => {
+      const idx = indice(nome);
+      return idx >= 0 && linha[idx] ? linha[idx].trim() : "";
+    };
+
+    const ativo = obter("ativo").toUpperCase();
+    if (ativo !== "SIM" && ativo !== "TRUE" && ativo !== "1") continue;
+
+    const fotos = [];
+    for (let n = 1; n <= 8; n++) {
+      const url = obter(`foto${n}`);
+      if (url && url.startsWith("http")) fotos.push(url);
+    }
+
+    const caracteristicasStr = obter("caracteristicas");
+    const caracteristicas = caracteristicasStr
+      ? caracteristicasStr.split(",").map((c) => c.trim()).filter(Boolean)
+      : [];
+
+    imoveis.push({
+      id: parseInt(obter("id"), 10) || i,
+      titulo: obter("titulo"),
+      cidade: obter("cidade"),
+      bairro: obter("bairro"),
+      tipo: obter("tipo"),
+      preco: parseFloat(obter("preco")) || 0,
+      quartos: parseInt(obter("quartos"), 10) || 0,
+      banheiros: parseInt(obter("banheiros"), 10) || 0,
+      vagas: parseInt(obter("vagas"), 10) || 0,
+      area: parseFloat(obter("area")) || 0,
+      destaque: ["SIM", "TRUE", "1"].includes(obter("destaque").toUpperCase()),
+      descricao: obter("descricao"),
+      caracteristicas,
+      fotos,
+    });
+  }
+  return imoveis;
+}
 
 // ---------- COMPONENTE PRINCIPAL ----------
 export default function App() {
@@ -263,8 +147,39 @@ export default function App() {
   const [faqAberto, setFaqAberto] = useState(null);
   const [formEnviado, setFormEnviado] = useState(false);
 
+  // Estado dos imóveis carregados da planilha
+  const [imoveis, setImoveis] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(null);
+
+  // Carregar imóveis da planilha quando o site abre
+  useEffect(() => {
+    fetch(SHEETS_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error("Não foi possível ler a planilha");
+        return res.text();
+      })
+      .then((csv) => {
+        const linhas = parseCSV(csv);
+        const lista = linhasParaImoveis(linhas);
+        setImoveis(lista);
+        setCarregando(false);
+      })
+      .catch((e) => {
+        console.error("Erro ao carregar imóveis:", e);
+        setErro(e.message);
+        setCarregando(false);
+      });
+  }, []);
+
+  // Lista de cidades calculada a partir dos imóveis carregados
+  const CIDADES = useMemo(
+    () => ["Todas", ...new Set(imoveis.map((i) => i.cidade).filter(Boolean))],
+    [imoveis]
+  );
+
   const imoveisFiltrados = useMemo(() => {
-    return IMOVEIS.filter((i) => {
+    return imoveis.filter((i) => {
       if (filtros.cidade !== "Todas" && i.cidade !== filtros.cidade) return false;
       if (filtros.tipo !== "Todos" && i.tipo !== filtros.tipo) return false;
       if (filtros.quartos > 0 && i.quartos < filtros.quartos) return false;
@@ -278,7 +193,7 @@ export default function App() {
         return false;
       return true;
     });
-  }, [filtros]);
+  }, [imoveis, filtros]);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -502,12 +417,29 @@ export default function App() {
               </div>
             </div>
             <div className="mt-4 font-body text-sm text-stone-500">
-              {imoveisFiltrados.length} {imoveisFiltrados.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}
+              {carregando
+                ? "carregando..."
+                : `${imoveisFiltrados.length} ${imoveisFiltrados.length === 1 ? "imóvel encontrado" : "imóveis encontrados"}`}
             </div>
           </div>
 
           {/* Grid */}
-          {imoveisFiltrados.length === 0 ? (
+          {carregando ? (
+            <div className="text-center py-20 font-body text-stone-500">
+              <div className="inline-block w-10 h-10 border-2 border-stone-300 border-t-[#b85c3d] rounded-full animate-spin mb-4"/>
+              <div className="font-display text-xl text-stone-700">Carregando imóveis...</div>
+            </div>
+          ) : erro ? (
+            <div className="text-center py-20 font-body text-stone-500">
+              <div className="font-display text-2xl text-stone-700 mb-2">Não conseguimos carregar os imóveis</div>
+              <p>Por favor tente novamente em alguns minutos, ou entre em contato pelo WhatsApp.</p>
+            </div>
+          ) : imoveis.length === 0 ? (
+            <div className="text-center py-20 font-body text-stone-500">
+              <div className="font-display text-2xl text-stone-700 mb-2">Em breve, novos imóveis</div>
+              <p>Estamos atualizando nosso catálogo. Entre em contato pelo WhatsApp para conhecer as oportunidades disponíveis.</p>
+            </div>
+          ) : imoveisFiltrados.length === 0 ? (
             <div className="text-center py-20 font-body text-stone-500">
               <div className="font-display text-2xl text-stone-700 mb-2">Nenhum imóvel encontrado</div>
               <p>Ajuste os filtros para ver mais opções, ou entre em contato — talvez tenhamos algo perfeito ainda fora do site.</p>
