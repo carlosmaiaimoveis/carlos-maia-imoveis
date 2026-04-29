@@ -62,16 +62,14 @@ function parseCSV(texto) {
     } else if (c === "," && !dentroDeAspas) {
       atual.push(campo);
       campo = "";
-    } else if ((c === "
-" || c === "") && !dentroDeAspas) {
+    } else if ((c === "\n" || c === "\r") && !dentroDeAspas) {
       if (campo !== "" || atual.length > 0) {
         atual.push(campo);
         linhas.push(atual);
         atual = [];
         campo = "";
       }
-      if (c === "" && proximo === "
-") i++;
+      if (c === "\r" && proximo === "\n") i++;
     } else {
       campo += c;
     }
